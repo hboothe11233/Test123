@@ -11,9 +11,9 @@ import XCTest
 
 class Test123Tests: XCTestCase {
     
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -21,9 +21,51 @@ class Test123Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNames() {
+        
+        for offer in offers! {
+            XCTAssertNotNil(offer.name)
+        }
+    }
+    
+    func testDescriptions(){
+        for offer in offers! {
+            XCTAssertNotNil(offer.description)
+        }
+    }
+    
+    func testCurrentValue(){
+        for offer in offers! {
+            XCTAssertNotNil(offer.currentValue)
+        }
+    }
+    
+    func testCurrentUrl(){
+        for offer in offers! {
+            if offer.id == "120330" || offer.id == "120331"{
+               XCTAssertNil(offer.url, "\(offer.name) with ID \(offer.id) has nil value")
+            }else{
+                XCTAssertNotNil(offer.url)
+            }
+        }
+    }
+    
+    func testTerms(){
+        for offer in offers! {
+            XCTAssertNotNil(offer.terms)
+        }
+    }
+    
+    func testId(){
+        for offer in offers! {
+            XCTAssertNotNil(offer.id)
+        }
+    }
+    
+    func testIsFavorite(){
+        for offer in offers! {
+            XCTAssertFalse(offer.isFavorite)
+        }
     }
     
     func testPerformanceExample() {
