@@ -109,8 +109,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let url = URL(string : tempLink)!
                         let data = try Data(contentsOf: url)
                         
-                        //Sync call to load images from response via main queue
-                        DispatchQueue.main.sync{
+                        //aSync update to load images on main queue
+                        DispatchQueue.main.async{
                             cell.offerImageView.image = UIImage(data: data)
                             cell.spinner.stopAnimating()
                             cell.favoriteImageView?.isHidden = !viewModel.isFavorite(for: indexPath.item)
